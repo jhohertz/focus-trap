@@ -21,18 +21,32 @@ Forked from the no longer maintained [wovue-focus-trap](https://wovue.github.io/
 Please read [the focus-trap documentation](https://github.com/davidtheclark/focus-trap#focus-trap) to understand what a focus trap is, what happens when a focus trap is activated, and what happens when one is deactivated.
 
 
-### NPM
-Install the package using npm
+### NPM + AWS CodeArtifact
+
+Install Node v12.22.x, NPM v6.14.x. At this point in time, Node 12 is as high as we can go due to our dependencies.
+
+Install this package using npm as usual, but be logged into CodeArtifact via the AWS CLI.
 
 ```sh
+# NEW
+$ aws codeartifact login --tool npm --domain viafoura --repository viafoura-repository --namespace vf
+$ npm install --save @vf/vue-focus-trap
+
+# OLD
 $ npm install --save @viafoura/vue-focus-trap
 ```
+
+**NOTES:**
+
+* The login command will ask you for an MFA code.
+* This config will be valid for twelve (12) hours.
+* [VF AWS Access Documentation](https://sites.google.com/a/viafoura.com/wiki/engineering/aws-access?authuser=0&pli=1)
 
 Install the plugin
 
 ```js
 import Vue from 'vue';
-import { FocusTrap } from '@viafoura/vue-focus-trap';
+import { FocusTrap } from '@vf/vue-focus-trap';
 
 // Use it as a global component...
 Vue.component('focus-trap', FocusTrap);
@@ -62,7 +76,7 @@ TODO
 ```
 
 ```js
-import { FocusTrap } from '@viafoura/vue-focus-trap';
+import { FocusTrap } from '@vf/vue-focus-trap';
 
 export default {
   data () {
@@ -89,6 +103,7 @@ export default {
 
 ``` bash
 # install dependencies
+aws codeartifact login --tool npm --domain viafoura --repository viafoura-repository --namespace vf
 npm install
 
 # serve with hot reload src-docs at localhost:8080
