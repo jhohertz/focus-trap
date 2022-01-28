@@ -70,7 +70,7 @@
         "http-proxy-middleware": "^0.12.0",
         "json-loader": "^0.5.4",
         "markdown-highlight-loader": "^0.1.2",
-        "marked": "^0.3.6",
+        "marked": "^4.0.10",
         "node-sass": "^4.12.0",
         "ora": "^0.2.0",
         "postcss-loader": "^0.13.0",
